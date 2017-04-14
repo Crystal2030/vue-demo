@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dynamical props</title>
+</head>
+<body>
+<div id="example">
+    <input type="text" v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+</body>
+</html>
+<script src="../vue.js"></script>
+<script>
+    Vue.component('child', {
+        // declare the props
+        props: ['myMessage'],
+        // just like data, the prop can be used inside templates
+        // and is also made available in the vm as this.message
+        template: '<span>{{ myMessage }}</span>'
+    })
+
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            parentMsg: 'my parent message'
+        }
+    })
+</script>

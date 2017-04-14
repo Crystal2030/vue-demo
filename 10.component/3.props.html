@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props</title>
+</head>
+<body>
+<child id="example" my-message="hello"></child>
+</body>
+</html>
+<script src="../vue.js"></script>
+<script>
+    Vue.component('child', {
+        // declare the props
+        props: ['myMessage'],
+        // just like data, the prop can be used inside templates
+        // and is also made available in the vm as this.message
+        template: '<span>{{ myMessage }}</span>'
+    })
+
+    var vm = new Vue({
+        el: '#example'
+    })
+</script>

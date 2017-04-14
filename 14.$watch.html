@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$watch</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="message">
+   {{message}}
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello'
+        }
+    })
+    //$watch监听数据变化
+    vm.$watch('message', function(newVal, oldVal){
+        console.log(newVal, oldVal)
+    })
+</script>

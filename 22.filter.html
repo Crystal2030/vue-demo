@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+
+</head>
+<body>
+<div id="app">
+    但是2.0中已经废弃了过滤器，需要我们自定义
+    <!--{{ 'hello' | capitalize }} //Hello
+    {{'hello world' | uppercase}}
+    {{'hello world' | lowercase}}
+    {{ '111' | currency }}
+    &lt;!&ndash;单数 复数 如果是1 都是单数 除了1都是复数&ndash;&gt;
+    {{1 | pluralize 'item'}}//item
+    &lt;!&ndash;转换不同数字，最大为9不满足的均为最后一项&ndash;&gt;
+    {{3 | pluralize 'item1' 'item2' 'item3' 'item4' 'item5' 'item6' 'item7'}}
+    &lt;!&ndash;延迟事件执行时间&ndash;&gt;
+    <input type="text" @keyup="make | debounce 1000">
+    &lt;!&ndash;显示几条，从哪条开始显示&ndash;&gt;
+    <button @click="count+=2"></button>
+    <div v-for="arr in arr1 | limitBy 2 count">
+        {{arr.name}}
+    </div>
+    &lt;!&ndash;在所用数据中过滤&ndash;&gt;
+    <div v-for="arr in arr1 | filterBy 'hello1'">
+        {{arr.name}}
+    </div>
+    &lt;!&ndash;在指定的数据中过滤，节约性能&ndash;&gt;
+    <div v-for="arr in arr1 | filterBy 'hello1' in 'name'">
+        {{arr.name}}
+    </div>
+
+    <button @click="order = order * -1">排序反</button>
+    <div v-for="arr in arr1 | orderBy 'name' -1">
+        {{arr.name}}
+    </div>-->
+</div>
+
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    Vue.filter('capitalize', function(value, begin, end){
+        return value.slice(0, begin).toUpperCase()+value.slice(begin);
+    })
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            order: 1,
+            message: {'name': 'hello', 'age': 9},
+            arr1: [
+                {name: 'hello1', age: 1},
+                {name: 'hello2', age: 2},
+                {name: 'hello3', age: 18},
+                {name: 'hello4', age: 12},
+                {name: 'hello5', age: 6},
+                {name: 'hello6', age: 22},
+                {name: 'hello7', age: 26},
+                {name: 'hello8', age: 1},
+                {name: 'hello9', age: 28},
+            ],
+            count: 0
+        },
+        methods: {
+            make(){
+                alert(1);
+            }
+        }
+    })
+
+</script>

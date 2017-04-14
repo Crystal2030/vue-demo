@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nextTick</title>
+</head>
+<body>
+<div id="app">
+   <example v-on:updateMessage></example>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    Vue.component('example', {
+        template: '<span v-on:click="updateMessage">{{ message }}</span>',
+        data: function () {
+            return {
+                message: 'not updated'
+            }
+        },
+        methods: {
+            updateMessage: function () {
+                this.message = 'updated'
+                console.log(this.$el.textContent) // => 'not updated'
+                this.$nextTick(function () {
+                    console.log(this.$el.textContent) // => 'updated'
+                })
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#app'
+    })
+</script>

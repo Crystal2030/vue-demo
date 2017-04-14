@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+
+</head>
+<body>
+<div id="app">
+    <!--如果写入的是checkbox我们需要设定一个数组-->
+    <input type="checkbox" name="group" v-model="checks" value="eat">
+    <input type="checkbox" name="group" v-model="checks" value="drink">
+    <input type="checkbox" name="group" v-model="checks" value="play">
+    {{checks}}
+
+    <input type="radio" v-model="radio" value="male">
+    <input type="radio" v-model="radio" value="female">
+    {{radio}}
+
+    <select v-model="selects" multiple>
+        <option value="vue">vue</option>
+        <option value="react">react</option>
+        <option value="angular">angular</option>
+    </select>
+    {{selects}}
+
+
+    <!--as for in vue只能通过v-for-->
+    <select>
+        <option :value="item.age" v-for="item in items">{{item.name}}</option>
+    </select>
+
+    <!--失去焦点时候刷新-->
+    <input type="text" v-model="data" lazy>
+    {{data}}
+    <input type="text" v-model="data" debounce="3000">
+    {{data}}
+
+</div>
+
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            checks: [],
+            radio: '',
+            selects: [],
+            items: [
+                {name: 'hello1', age: 1},
+                {name: 'hello2', age: 2},
+                {name: 'hello3', age: 18},
+                {name: 'hello4', age: 12},
+                {name: 'hello5', age: 6},
+                {name: 'hello6', age: 22},
+                {name: 'hello7', age: 26},
+                {name: 'hello8', age: 1},
+                {name: 'hello9', age: 28},
+            ],
+            data: 111
+        },
+        methods: {
+
+        }
+    })
+
+</script>

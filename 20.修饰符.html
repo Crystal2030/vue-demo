@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修饰符</title>
+</head>
+<body>
+<div id="app">
+    <div @click.self="parent">
+        <!--.self限制将事件绑定到自己身上，子事件冒泡也不会影响-->
+        parent
+        <div>middle</div>
+        <!--<div @click.stop="child">
+            &lt;!&ndash;.stop阻止事件冒泡&ndash;&gt;
+            child
+        </div>-->
+        <div @click="child">
+            <!--.stop阻止事件冒泡-->
+            child
+        </div>
+    </div>
+    <a href="http://www.baidu.com" @click.prevent>Baidu</a>
+    <!--监听键盘事件-->
+    <input type="text" @keyup.enter="parent">
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        methods: {
+            parent(){
+                alert('parent');
+            },
+            child(){
+                alert('child')
+            }
+        }
+    })
+
+</script>

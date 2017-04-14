@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div id="app">
+    <ul class="pagination">
+        <li v-for="n in pageCount">
+            <a href="javascript:void(0);" v-bind:class="activeNumber===n?'active':''">{{n}}</a>
+        </li>
+    </ul>
+    <div v-bind:class="classObject">333</div>
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">ooo</div>
+    <div >
+        <img  v-bind:src="src" alt="">
+        <a v-bind:href="href">go baidu</a>
+    </div>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //model
+
+    //create a vue instance or "viewModel"
+    new Vue({
+        el: '#app',
+        data: {
+            src: 'https://vuejs.org/images/logo.png',
+            href: 'http://www.baidu.com',
+            activeNumber: 1,
+            pageCount: 10,
+            isActive: true,
+            error: null,
+            activeColor: 'red',
+            fontSize: 30
+        },
+        computed: {
+            classObject: function(){
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type == 'fatal'
+                }
+            }
+        }
+    });
+
+
+</script>

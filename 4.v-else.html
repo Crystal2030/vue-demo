@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show</title>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="age >= 25">Age: {{ age }}</h1>
+    <h1 v-else>Name: {{ name }}</h1>
+    <h1>---------------------分割线---------------------</h1>
+    <h1 v-if="name.indexOf('jack') >= 0">Name: {{ name }}</h1>
+    <h1 v-else>Sex: {{ sex }}</h1>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //model
+    var exampleData = {
+        message: "Hello World",
+        yes: "true",
+        no: "false",
+        age: "27",
+        name: "keepvue",
+        sex: "female"
+    };
+
+    //create a vue instance or "viewModel"
+    new Vue({
+        el: '#app',
+        data: exampleData
+    })
+</script>

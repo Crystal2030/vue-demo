@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="count">
+    {{sum}}
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            price: 20,
+            count: 5,
+            message: 'hello'
+        },
+        computed: {
+            sum: function(){//默认的方法是获取
+                //在vm中所有的this指向的都是当前的实例
+                return this.price*this.count;
+            }
+        }
+    })
+
+</script>

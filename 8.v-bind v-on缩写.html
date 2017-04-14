@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind和v-on缩写</title>
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div id="app">
+    <ul class="pagination">
+        <li v-for="n in pageCount">
+            <!--完整语法-->
+            <a href="javascript:void(0);" v-bind:class="activeNumber===n?'active':''">{{n}}</a>
+        </li>
+    </ul>
+    <ul class="pagination">
+        <li v-for="n in pageCount">
+            <!--缩写语法-->
+            <a href="javascripit:void(0)" :class="activeNumber=== n ? 'active' : ''">{{ n  }}</a>
+        </li>
+    </ul>
+
+    <!--完整语法-->
+    <button v-on:click="greet">Greet</button>
+    <!--缩写语法-->
+    <button @click="greet">Greet</button>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //model
+
+    //create a vue instance or "viewModel"
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello vue.js',
+            activeNumber: 1,
+            pageCount: 10
+        },
+        methods: {
+            greet: function(){
+                alert(this.message);
+            },
+            say: function(msg){
+                alert(msg);
+            }
+        }
+    });
+
+</script>

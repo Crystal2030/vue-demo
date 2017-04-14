@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+</head>
+<body>
+    <!--view-->
+    <div id="app">
+        {{message}}
+        <input type="text" v-model="message">
+    </div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //model
+    var exampleData = {
+        message: "Hello World",
+        yes: "true",
+        no: "false",
+        age: "27",
+        name: "keepvue"
+    };
+
+    //create a vue instance or "viewModel"
+    new Vue({
+        el: '#app',
+        data: exampleData
+    })
+</script>

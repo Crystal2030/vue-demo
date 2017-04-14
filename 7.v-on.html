@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div id="app">
+    <!--v-on执行方法的时候需要传递参数的时候添加(),
+    如果不需要传递参数可以不用加()
+    如果需要传递参数我们要手动传入事件源-->
+    <p><input type="text" v-model="message"></p>
+    <p>
+        <button v-on:click="greet">Greet</button>
+    </p>
+    <p>
+        <button v-on:click="say('Hi')">Hi</button>
+    </p>
+    <p>
+        <button v-on:click="add(1,$event)">add</button>
+    </p>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //model
+
+    //create a vue instance or "viewModel"
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello vue.js'
+        },
+        methods: {
+            greet: function(){
+                alert(this.message);
+            },
+            say: function(msg){
+                alert(msg);
+            },
+            add: function(e,event){
+                //e事件源
+                console.log(event);
+            }
+        }
+    });
+
+</script>

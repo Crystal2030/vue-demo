@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show</title>
+</head>
+<body>
+<div id="app">
+    <!--angularjs中使用ng-repeat-->
+    <!--vue中用-for-->
+    <template v-for="(key,value) in message">
+        <!--{{$index}}:{{value}}{{key}}:{{$key}} <br>-->
+    </template>
+    <!--$index表示当前第几个 ($odd, $even $first $last)-->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!--track-by: 强制通过索引遍历-->
+            <tr v-for="person in people" track-by="$index">
+                <td>{{person.name}}</td>
+                <td>{{person.age}}</td>
+                <td>{{person.sex}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //model
+    var people = [{
+        name: 'Jack',
+        age: 30,
+        sex: 'Male',
+        type: ['white', 'black']
+    }, {
+        name: 'Bill',
+        age: 26,
+        sex: 'Male',
+        type: ['green', 'red']
+    }, {
+        name: 'Tracy',
+        age: 22,
+        sex: 'Female',
+        type: ['yellow', 'pink']
+    }, {
+        name: 'Chris',
+        age: 36,
+        sex: 'Male',
+        type: ['orange', 'blue']
+    }];
+    //create a vue instance or "viewModel"
+    new Vue({
+        el: '#app',
+        data: {
+            people:people,
+            message:{
+                name: 'crystal',
+                age: 7
+            }
+        }
+    });
+
+
+</script>

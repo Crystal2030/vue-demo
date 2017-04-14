@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式</title>
+    <style>
+        .color{
+            color: yellow;
+        }
+        .background{
+            background: #f0ad4e;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div :class="class1">hello</div>
+    <div :class="class2">world</div>
+    <!--绑定的是样式对应的类名-->
+    <div :class="{color:true,background:false}">ooo</div>
+    <div :class="[class1,class2]">hello world</div>
+    <!--对象和数组结合使用-->
+    <div :class="[class1, {'background':true}]">hello world</div>
+    <!--数组中使用三元表达式-->
+    <div class="[false?class1:'my1', {'background': true}]">33333</div>
+    <!--行内样式,当vue执行后悔覆盖掉预设的行内样式-->
+    <div style="font-size:10px" :style="{background:'red',fontSize: '20px'}">行内样式</div>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            class1: 'color',
+            class2: 'background'
+        }
+    })
+
+</script>

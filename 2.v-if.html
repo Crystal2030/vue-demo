@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+</head>
+<body>
+<div id="app">
+    <!--template标签不会被渲染-->
+    <!--v-show不支持template语法-->
+    <template v-if="true">
+        <div>hello</div>
+        <div>world</div>
+    </template>
+    <h1 v-if="yes">yes</h1>
+    <h1 v-if="no">no</h1>
+    <h1 v-if="age>=24">age >= 24</h1>
+    <h1 v-if="name.indexOf('jack') >=0 ">Name: {{name}}</h1>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //model
+    var exampleData = {
+        message: "Hello World",
+        yes: "true",
+        no: "false",
+        age: "27",
+        name: "keepvue"
+    };
+
+    //create a vue instance or "viewModel"
+    new Vue({
+        el: '#app',
+        data: exampleData
+    })
+</script>

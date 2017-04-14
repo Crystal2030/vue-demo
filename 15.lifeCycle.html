@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lifeCycle</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="message">
+   {{message}}
+</div>
+
+作者：coder joy
+链接：https://www.zhihu.com/question/37833194/answer/91812053
+来源：知乎
+著作权归作者所有，转载请联系作者获得授权。
+
+<div class="app">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="checkbox" v-model="allChecked"/>全选{{allChecked}}</td>
+        </tr>
+        <tr v-for="item in list">
+            <td><input type="checkbox" v-model="item.checked" /></td>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+    //代码
+    var _list = [{name:"小明",age:23, checked: true},{name:"小红",age:20, checked: true},{name:"ddd",age:30, checked: true}];
+
+    new Vue({
+        el: '.app',
+        computed: {
+            allChecked: {
+                get: function(){
+                    return this.checkedCount == this.list.length;
+                },
+                set: function(value){
+                    this.list.forEach(function(item){
+                        item.checked = value
+                    })
+                    return value;
+                }
+            },
+            checkedCount: {
+                get: function(){
+                    var i = 0;
+                    this.list.forEach(function(item){
+                        if(item.checked == true) i++;
+                    })
+                    return i;
+                }
+            }
+        },
+        data:{
+            list: _list
+        }
+    });
+
+
+    var vm = new Vue({
+        data: {
+            message: 'hello'
+        },
+        created: function() {
+            alert('创建')
+        },
+        beforeCompile: function(){
+            alert('编译前')
+        },
+        compiled: function(){
+            alert('编译完成')
+        },
+        ready: function(){
+            alert('准备好了')
+        },
+        beforeDestroy: function(){
+            alert('销毁前')
+        },
+        destroyed: function(){
+            alert('销毁')
+        }
+    })
+    //手动挂在 制定el元素
+   vm.$mount('#app');
+    //销毁需要调用$destroy
+    vm.$destroy();
+</script>
