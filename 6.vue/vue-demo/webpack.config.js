@@ -12,19 +12,19 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue',
+        loader: 'vue-loader',
         options: {
           // vue-loader options go here
         }
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: 'style!css' //顺序定死的
+        loader: 'style-loader!css-loader' //顺序定死的
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
